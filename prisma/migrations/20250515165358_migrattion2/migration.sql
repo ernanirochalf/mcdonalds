@@ -4,7 +4,7 @@
   - You are about to drop the column `updadeAt` on the `MenuCategory` table. All the data in the column will be lost.
   - You are about to drop the column `updadeAt` on the `Order` table. All the data in the column will be lost.
   - You are about to drop the column `updadeAt` on the `OrderProduct` table. All the data in the column will be lost.
-  - You are about to drop the column `menuCategoriesId` on the `Product` table. All the data in the column will be lost.
+  - You are about to drop the column `menuCategoryId` on the `Product` table. All the data in the column will be lost.
   - You are about to drop the column `updadeAt` on the `Product` table. All the data in the column will be lost.
   - You are about to drop the column `updadeAt` on the `Restaurant` table. All the data in the column will be lost.
   - Added the required column `customerCpf` to the `Order` table without a default value. This is not possible if the table is not empty.
@@ -15,7 +15,7 @@
 
 */
 -- DropForeignKey
-ALTER TABLE "Product" DROP CONSTRAINT "Product_menuCategoriesId_fkey";
+ALTER TABLE "Product" DROP CONSTRAINT "Product_menuCategoryId_fkey";
 
 -- AlterTable
 ALTER TABLE "MenuCategory" DROP COLUMN "updadeAt",
@@ -33,7 +33,7 @@ ALTER TABLE "OrderProduct" DROP COLUMN "updadeAt",
 ADD COLUMN     "updatedAt" TIMESTAMP(3) NOT NULL;
 
 -- AlterTable
-ALTER TABLE "Product" DROP COLUMN "menuCategoriesId",
+ALTER TABLE "Product" DROP COLUMN "menuCategoryId",
 DROP COLUMN "updadeAt",
 ADD COLUMN     "menuCategoryId" TEXT NOT NULL,
 ALTER COLUMN "updatedAt" DROP DEFAULT,

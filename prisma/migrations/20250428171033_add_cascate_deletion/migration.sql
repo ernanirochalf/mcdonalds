@@ -11,7 +11,7 @@ ALTER TABLE "OrderProduct" DROP CONSTRAINT "OrderProduct_orderId_fkey";
 ALTER TABLE "OrderProduct" DROP CONSTRAINT "OrderProduct_productId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "Product" DROP CONSTRAINT "Product_menuCategoriesId_fkey";
+ALTER TABLE "Product" DROP CONSTRAINT "Product_menuCategoryId_fkey";
 
 -- DropForeignKey
 ALTER TABLE "Product" DROP CONSTRAINT "Product_restaurantId_fkey";
@@ -23,7 +23,7 @@ ALTER TABLE "MenuCategory" ADD CONSTRAINT "MenuCategory_restaurantId_fkey" FOREI
 ALTER TABLE "Product" ADD CONSTRAINT "Product_restaurantId_fkey" FOREIGN KEY ("restaurantId") REFERENCES "Restaurant"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Product" ADD CONSTRAINT "Product_menuCategoriesId_fkey" FOREIGN KEY ("menuCategoriesId") REFERENCES "MenuCategory"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Product" ADD CONSTRAINT "Product_menuCategoryId_fkey" FOREIGN KEY ("menuCategoryId") REFERENCES "MenuCategory"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Order" ADD CONSTRAINT "Order_restaurantId_fkey" FOREIGN KEY ("restaurantId") REFERENCES "Restaurant"("id") ON DELETE CASCADE ON UPDATE CASCADE;

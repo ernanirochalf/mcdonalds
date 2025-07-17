@@ -6,11 +6,12 @@ import ProductDetails from "./components/product-details";
 import ProductHeader from "./components/product-header";
 
 interface ProductPageProps {
-  params: Promise<{ slug: string; productId: string }>;
+  params: { slug: string; productid: string };
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  const { slug, productId } = await params;
+  const { slug, productid: productId } = params;
+
   const product = await db.product.findUnique({
     where: { id: productId },
     include: {
@@ -23,12 +24,13 @@ const ProductPage = async ({ params }: ProductPageProps) => {
       },
     },
   });
-  if (!product) {
-    return notFound();
-  }
+
+  if (!product) return notFound();
+
   if (product.restaurant.slug.toUpperCase() !== slug.toUpperCase()) {
     return notFound();
   }
+
   return (
     <div className="flex h-full flex-col">
       <ProductHeader product={product} />
