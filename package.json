@@ -7,14 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1 npx prisma generate --no-engine"
   },
   "prisma": {
     "seed": "ts-node ./prisma/seed.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.0.0",
-    "@prisma/client": "^6.2.1",
+    "@prisma/client": "^4.16.2",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-scroll-area": "^1.2.2",
@@ -26,7 +26,7 @@
     "lucide-react": "^0.474.0",
     "next": "15.1.6",
     "next-themes": "^0.4.4",
-    "prisma": "^6.2.1",
+    "prisma": "^4.16.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.54.2",
