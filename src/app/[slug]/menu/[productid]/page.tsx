@@ -9,7 +9,7 @@ interface ProductPageProps {
   params: { slug: string; productid: string };
 }
 
-const ProductPage = async ({ params }: ProductPageProps) => {
+export default async function ProductPage({ params }: ProductPageProps) {
   const { slug, productid: productId } = params;
 
   const product = await db.product.findUnique({
@@ -25,9 +25,10 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     },
   });
 
-  if (!product) return notFound();
-
-  if (product.restaurant.slug.toUpperCase() !== slug.toUpperCase()) {
+  if (
+    !product ||
+    product.restaurant.slug.toUpperCase() !== slug.toUpperCase()
+  ) {
     return notFound();
   }
 
@@ -37,6 +38,4 @@ const ProductPage = async ({ params }: ProductPageProps) => {
       <ProductDetails product={product} />
     </div>
   );
-};
-
-export default ProductPage;
+}
