@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-
 import { db } from "@/lib/prisma";
 
 import ProductDetails from "./components/product-details";
